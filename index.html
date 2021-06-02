@@ -1,56 +1,111 @@
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
+<html lang="en">
 
-    <title>Puzzle Image finder</title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="https://getbootstrap.com/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <!-- Bootstrap core CSS -->
-    <link href="bootstrap.min.css" rel="stylesheet">
+  <title>Puzzle Image finder</title>
 
-    <!-- Custom styles for this template -->
-    <link href="cover.css" rel="stylesheet">
-  </head>
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
 
-  <body class="text-center" data-new-gr-c-s-check-loaded="14.1012.0" data-gr-ext-installed="">
+  <!-- Bootstrap core CSS -->
+  <link href="bootstrap.min.css" rel="stylesheet">
 
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">Cover</h3>
-          <nav class="nav nav-masthead justify-content-center">
-            <a class="nav-link active" href="#">Home</a>
-          </nav>
+  <!-- Custom styles for this template -->
+  <link href="cover.css" rel="stylesheet">
+</head>
+
+<body class="text-center" data-new-gr-c-s-check-loaded="14.1012.0" data-gr-ext-installed="">
+
+  <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+      <div class="inner">
+        <h3 class="masthead-brand">GiGa</h3>
+        <!-- <nav class="nav nav-masthead justify-content-center">
+          <a class="nav-link active" href="#">Home</a>
+        </nav> -->
+      </div>
+    </header>
+
+    <main role="main" class="inner cover">
+      <h1 class="cover-heading">ഗിഞ്ചിമൂഡ്‌ ഗാന്ധാരി</h1>
+      <br>
+      <p class="lead">
+        <a href="https://chat.whatsapp.com/LGi7vHsc6kFJwDhFjaLYds" target="_blank"
+          class="btn btn-lg btn-secondary">WhatsApp</a>
+      </p>
+      <br>
+      <h4 class="cover-heading">Puzzle image finder</h4>
+      <!-- <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the
+        text, and add your own fullscreen background photo to make it your own.</p> -->
+      <br>
+
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Enter your word</label>
+          <input type="text" class="form-control" id="word" aria-describedby="emailHelp" placeholder="Enter word">
+          <small id="emailHelp" class="form-text text-muted">We'll search with the word and find our next clue.</small>
         </div>
-      </header>
-
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">Cover your page.</h1>
-        <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div id="resultContainer">
         <p class="lead">
-          <a href="https://getbootstrap.com/docs/4.0/examples/cover/#" class="btn btn-lg btn-secondary">Learn more</a>
+          <a href="https://chat.whatsapp.com/LGi7vHsc6kFJwDhFjaLYds" id="viewintab" target="_blank">View in new
+            window</a>
         </p>
-      </main>
+        <iframe id="iframe" width="100%"></iframe>
+      </div>
+    </main>
 
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a><!--, by <a href="https://twitter.com/mdo">@mdo</a>.--></p>
-        </div>
-      </footer>
-    </div>
+    <footer class="mastfoot mt-auto">
+      <div class="inner">
+        <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>
+          <!--, by <a href="https://twitter.com/mdo">@mdo</a>.-->
+        </p>
+      </div>
+    </footer>
+  </div>
 
 
-    <!-- Bootstrap core JavaScript
+  <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script><script src="../../assets/js/vendor/jquery-slim.min.js"></script>
-    <script src="popper.min.js"></script>
-    <script src="bootstrap.min.js"></script>
-  
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="popper.min.js"></script>
+  <script src="bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var $iframe = $('#iframe');
+      var $resultContainer = $('#resultContainer');
+      var $word = $('#word');
+      var $viewintab = $('#viewintab');
+      $resultContainer.hide();
 
-</body></html>
+
+      $("form").submit(function (e) {
+        e.preventDefault();
+        var url = 'https://linkpicture.com/q/tr-' + $word.val() + '.png';
+        $iframe.attr('src', url);
+        $iframe.attr('height', 200);
+        $viewintab.attr('href', url);
+        $resultContainer.show('fast');
+        return false;
+      });
+
+      $word.on('keypress', function () {
+        $resultContainer.hide('fast');
+        $iframe.src('src', '');
+        $iframe.attr('height', 0);
+      })
+    });
+  </script>
+
+
+</body>
+
+</html>
